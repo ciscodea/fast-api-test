@@ -40,11 +40,33 @@ class Person(BaseModel):
     hair_color: Optional[HairColor] = Field(default=None)
     is_married: Optional[bool] = Field(default=None)
 
+    class Config:
+        """Class only for testing purposes at swagger."""
+        schema_extra = {
+            "example": {
+                "first_name": "Pedro",
+                "last_name": "López",
+                "age": 24,
+                "hair_color": "black",
+                "is_married": False
+            },
+        }
+
 
 class Location(BaseModel):
     city: str
     state: str
     country: str
+
+    class Config:
+        """Class only for testing purposes at swagger."""
+        schema_extra = {
+            "example": {
+                "city": "San Luis Potosí",
+                "state": "San Luis Potosí",
+                "country": "México",
+            }
+        }
 
 
 @app.get("/")
